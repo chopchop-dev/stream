@@ -10,11 +10,8 @@ uploaded_file = st.file_uploader("Upload Mesh, vtk only",type=["vtk"])
 if uploaded_file is not None:
      # To read file as bytes:
      bytes_data = uploaded_file.getvalue()
-     file_details = {"FileName":bytes_data.name,"FileType":bytes_data.type}
-     with open(os.path.join("tempDir",bytes_data.name),"wb") as f: 
-       f.write(image_file.getbuffer())         
-     st.success("Saved File")
-     #st.write(bytes_data)
+     file_details = {"FileName":uploaded_file.name,"FileType":uploaded_file.type}
+     save_uploadedfile(bytes_data)
      mesh = pyvista.read('new_mesh.vtk')
      clipped = mesh.clip('y', invert=False)
      pl = pyvista.Plotter(shape=(1,2))
@@ -29,3 +26,7 @@ if uploaded_file is not None:
        components.html(source_code, height = 500,width=500)
 
 
+def save_uploadedfile(uploadedfile):
+     with open(os.path.join("tempDir",uploadedfile.name),"wb") as f:
+         f.write(uploadedfile.getbuffer())
+     return st.success("Saved File:{} to tempDir".format(uploadedfile.name))
