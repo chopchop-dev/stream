@@ -10,9 +10,10 @@ uploaded_file = st.file_uploader("Upload Mesh, vtk only",type=["vtk"])
 if uploaded_file is not None:
      # To read file as bytes:
      bytes_data = uploaded_file.getvalue()
-     with open(os.path.join("tempDir",image_file.name),"wb") as f: 
+     file_details = {"FileName":bytes_data.name,"FileType":bytes_data.type}
+     with open(os.path.join("tempDir",bytes_data.name),"wb") as f: 
        f.write(image_file.getbuffer())         
-       st.success("Saved File")
+     st.success("Saved File")
      #st.write(bytes_data)
      mesh = pyvista.read('new_mesh.vtk')
      clipped = mesh.clip('y', invert=False)
