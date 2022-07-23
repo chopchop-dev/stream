@@ -1,4 +1,5 @@
 import streamlit as st
+import shutil
 
 file = st.file_uploader("Choose a file")    
 if file is not None:
