@@ -4,6 +4,19 @@ import pyvista
 import pandas as pd
 import numpy as np
 st.title('Uber pickups in NYC')
+
+def save_uploadedfile(uploadedfile):
+with open(os.path.join(“Data”, uploadedfile.name), “wb”) as f:
+f.write(uploadedfile.getbuffer())
+return st.success(“Saved File:{} to Data”.format(uploadedfile.name))
+
+st.title(” PDF File upload”)
+st.text(” A simple way to upload files directly into a directory”)
+uploadedfiles = st.file_uploader(“Upload PDF”, type=[‘pdf’], accept_multiple_files=True)
+for file in uploadedfiles:
+if uploadedfiles is not None:
+save_uploadedfile(file)
+
 uploaded_file = st.file_uploader("Upload Mesh, vtk only",type=["vtk"])
 if uploaded_file is not None:
      # To read file as bytes:
