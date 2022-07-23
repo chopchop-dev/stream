@@ -7,7 +7,7 @@ st.title('Uber pickups in NYC')
 uploaded_file = st.file_uploader("Choose a Mesh file")
 if uploaded_file is not None:
      # To read file as bytes:
-     bytes_data = uploaded_file.getvalue(type=["vtk"])
+     bytes_data = uploaded_file.getvalue()
      #st.write(bytes_data)
      mesh = pyvista.read('new_mesh.vtk')
      clipped = mesh.clip('y', invert=False)
