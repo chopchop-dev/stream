@@ -11,7 +11,7 @@ def main():
     static_store = get_static_store()
 
     st.info(__doc__)
-    result = st.file_uploader("Upload", type="vtk")
+    result = st.file_uploader("Upload", type="pdf")
     if result:
         # Process you file here
         value = result.getvalue()
@@ -21,7 +21,7 @@ def main():
             static_store[result] = value
     else:
         static_store.clear()  # Hack to clear list if the user clears the cache and reloads the page
-        st.info("Upload one or more `.vtk` files.")
+        st.info("Upload one or more `.pdf` files.")
 
     if st.button("Clear file list"):
         static_store.clear()
