@@ -7,8 +7,8 @@ st.title('Uber pickups in NYC')
 
 def save_uploadedfile(uploadedfile):
      with open(os.path.join("Data”, uploadedfile.name), “wb”) as f:
-     f.write(uploadedfile.getbuffer())
-     return st.success(“Saved File:{} to Data”.format(uploadedfile.name))
+       f.write(uploadedfile.getbuffer())
+       return st.success(“Saved File:{} to Data”.format(uploadedfile.name))
 
 st.title(” PDF File upload”)
 st.text(” A simple way to upload files directly into a directory”)
