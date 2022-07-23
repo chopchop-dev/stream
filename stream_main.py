@@ -1,4 +1,6 @@
 import streamlit as st
+import streamlit.components.v1 as components
+import pyvista
 import pandas as pd
 import numpy as np
 st.title('Uber pickups in NYC')
@@ -8,14 +10,29 @@ if uploaded_file is not None:
      bytes_data = uploaded_file.getvalue()
      st.write(bytes_data)
 
-     # To convert to a string based IO:
-     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-     st.write(stringio)
+#     # To convert to a string based IO:
+#     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+#     st.write(stringio)#
 
-     # To read file as string:
-     string_data = stringio.read()
-     st.write(string_data)
+#     # To read file as string:
+#     string_data = stringio.read()
+#     st.write(string_data)
 
      # Can be used wherever a "file-like" object is accepted:
-     dataframe = pd.read_csv(uploaded_file)
-     st.write(dataframe)
+#     dataframe = pd.read_csv(uploaded_file)
+#     st.write(dataframe)
+
+mesh = pyvista.read(bytes_data)
+clipped = mesh.clip('y', invert=False)
+pl = pyvista.Plotter(shape=(1,2))
+#_ = pl.add_mesh(mesh, style='wireframe', color='blue', label='Input')
+_ = pl.add_mesh(clipped, label='Clipped',show_edges=True)
+pl.subplot(0,1)
+_ = pl.add_mesh(mesh, show_edges=True)
+pl.export_html('pyvista.html')  # doctest:+SKIP
+
+option=st.sidebar.radio('Pyvista',('On','Off'))
+if option=='On':
+  HtmlFile = open("pyvista.html", 'r', encoding='utf-8')
+  source_code = HtmlFile.read() 
+  components.html(source_code, height = 500,width=500)
