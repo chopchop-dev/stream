@@ -4,7 +4,7 @@ import pyvista
 import pandas as pd
 import numpy as np
 st.title('Uber pickups in NYC')
-uploaded_file = st.file_uploader("Choose a Mesh file")
+uploaded_file = st.file_uploader("Upload Mesh, vtk only",type=["vtk"])
 if uploaded_file is not None:
      # To read file as bytes:
      bytes_data = uploaded_file.getvalue()
