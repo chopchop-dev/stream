@@ -9,7 +9,7 @@ if uploaded_file is not None:
      # To read file as bytes:
      bytes_data = uploaded_file.getvalue()
      #st.write(bytes_data)
-     mesh = pyvista.read(bytes_data)
+     mesh = pyvista.read('new_mesh.vtk')
      clipped = mesh.clip('y', invert=False)
      pl = pyvista.Plotter(shape=(1,2))
      _ = pl.add_mesh(clipped, label='Clipped',show_edges=True)
