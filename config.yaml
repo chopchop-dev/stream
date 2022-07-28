@@ -4,14 +4,14 @@ cookie:
   name: some_cookie_name
 credentials:
   usernames:
-    jsmith:
-      email: jsmith@gmail.com
-      name: John Smith
+    yjhp1016:
+      email:yjhp1016@gmail.com 
+      name: jianhui
       password: $2b$12$9.ggJiqwa7yTc/x8n7xoIeLSipvMLQ7OOKUNXinBUQtm5kAC9n.xy # To be replaced with hashed password
-    rbriggs:
-      email: rbriggs@gmail.com
-      name: Rebecca Briggs
+    leo200809:
+      email: liang185954@gmail.com
+      name: liang
       password: $2b$12$CNoj4Yy9Al8Fscvjt0B7Z.5mgH0TN0GHpo1HndsJlJOBrYtBctzvu # To be replaced with hashed password
 preauthorized:
   emails:
-  - melsby@gmail.com
+  - none@none
