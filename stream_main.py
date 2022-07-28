@@ -4,6 +4,7 @@ import pyvista
 import shutil
 import pickle
 from pathlib import Path
+import yaml
 import streamlit_authenticator as stauth
 
 with open('config.yaml') as file:
