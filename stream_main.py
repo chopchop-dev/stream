@@ -10,7 +10,7 @@ import streamlit_authenticator as stauth
 
 # --- USER AUTHENTICATION ---
 names = ["Peter Parker", "Rebecca Miller"]
-usernames = ["pparker", "rmiller"]
+usernames = ["pparker","rmiller"]
 cookie_expiry_days= 30
 # load hashed passwords
 file_path = Path(__file__).parent / "hashed_pw.pkl"
