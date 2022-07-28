@@ -28,3 +28,10 @@ elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
     st.warning('Please enter your username and password')
+
+    
+try:
+    if authenticator.register_user('Register user', preauthorization=False):
+        st.success('User registered successfully')
+except Exception as e:
+    st.error(e)
