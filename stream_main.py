@@ -6,7 +6,7 @@ import pickle
 from pathlib import Path
 import streamlit_authenticator as stauth
 
-with open('../config.yaml') as file:
+with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = Authenticate(
