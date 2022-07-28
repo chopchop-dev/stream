@@ -10,7 +10,7 @@ import streamlit_authenticator as stauth
 with open('config.yaml') as file:
     config = yaml.SafeLoader(file)
 
-authenticator = stauth.Authenticate(
+authenticator = Authenticate(
     config['credentials'],
     config['cookie']['name'],
     config['cookie']['key'],
