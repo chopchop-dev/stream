@@ -11,12 +11,12 @@ import streamlit_authenticator as stauth
 # --- USER AUTHENTICATION ---
 names = ["Peter Parker", "Rebecca Miller"]
 usernames = ["pparker", "rmiller"]
-
+cookie_expiry_days= 30
 # load hashed passwords
 file_path = Path(__file__).parent / "hashed_pw.pkl"
 with file_path.open("rb") as file:
     hashed_passwords = pickle.load(file)
 
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "what", "wfwaefw", cookie_expiry_days=30)
+authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "what", "wfwaefw", cookie_expiry_days)
 
 name, authentication_status, username = authenticator.login("Login", "main")
