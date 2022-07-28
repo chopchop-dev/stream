@@ -7,16 +7,15 @@ from pathlib import Path
 import yaml
 import streamlit_authenticator as stauth
 
+with open('config.yaml') as file:
+    config = yaml.SafeLoader(file)
 
-# --- USER AUTHENTICATION ---
-names = ["Peter Parker", "Rebecca Miller"]
-usernames = ["pparker","rmiller"]
-cookie_expiry_days= 30
-# load hashed passwords
-file_path = Path(__file__).parent / "hashed_pw.pkl"
-with file_path.open("rb") as file:
-    hashed_passwords = pickle.load(file)
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
 
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords)
-
-name, authentication_status, username = authenticator.login("Login", "main")
+name, authentication_status, username = authenticator.login('Login', 'main')
