@@ -32,8 +32,7 @@ if authentication_status == None:
 
 if authentication_status:
     # ---- READ EXCEL ----
-    @st.cache
-    
+   @st.cache 
   file = st.file_uploader("Choose a file, VTK only")    
   if file is not None:
       # save the uploaded mesh file to disk
